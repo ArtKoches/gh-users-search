@@ -1,15 +1,21 @@
 import * as S from "./SideBar.styled";
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { findUsers } from "../../api.ts";
 
-export default function SideBar() {
+type Props = {
+  setUsers: (users: []) => void;
+};
+
+export default function SideBar({ setUsers }: Props) {
   const [searchVal, setSearchVal] = useState("");
+
+  useEffect(() => {
+    if (searchVal) findUsers(searchVal).then((users) => setUsers(users));
+  }, [searchVal, setUsers]);
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
   };
-
-  console.log(searchVal);
-  findUsers(searchVal);
 
   return (
     <>

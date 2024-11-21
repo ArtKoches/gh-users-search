@@ -1,13 +1,14 @@
-export const findUsers = async (login: string) => {
+const baseUrl = "https://api.github.com/search/users?";
+
+export const findUsers = async (query: string) => {
   try {
-    const response = await fetch(
-      `https://api.github.com/search/users?q=${login}`,
-    );
+    const queryParam = "q=" + encodeURIComponent(query + " in:login");
+    const response = await fetch(baseUrl + queryParam + "&per_page=10", {
+      headers: { Accept: "application/vnd.github.text-match+json" },
+    });
 
-    const data = await response.json();
-    console.log(data);
-
-    return data;
+    const users = await response.json();
+    return users.items;
   } catch (err) {
     console.error(err);
   }
