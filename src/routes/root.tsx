@@ -1,21 +1,26 @@
-import SideBar from "../components/SideBar/SideBar.tsx";
 import { useState } from "react";
-import { User } from "../lib/types.ts";
+import { useUsers } from "../hooks/useUsers.ts";
+import SideBar from "../components/SideBar/SideBar.tsx";
+import UserList from "../components/UserList/UserList.tsx";
+import { GlobalStyle } from "../styles/Global.styled.ts";
+import { Container } from "../styles/Common.styled.ts";
 
 export default function Root() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [search, setSearch] = useState("");
+  const { users } = useUsers(search);
 
   console.log(users);
 
   return (
     <>
-      <SideBar setUsers={setUsers} />
-      {users.map((user) => (
-        <div key={user.id}>
-          <img width={90} height={90} src={user.avatar_url} alt="avatar" />
-          {user.login}
-        </div>
-      ))}
+      <GlobalStyle />
+      <Container>
+        <SideBar setSearch={setSearch} />
+
+        {users.items.map((user) => (
+          <UserList {...user} />
+        ))}
+      </Container>
     </>
   );
 }

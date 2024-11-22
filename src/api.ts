@@ -1,3 +1,5 @@
+import { UsersData } from "./lib/types.ts";
+
 const baseUrl = "https://api.github.com/search/users?";
 
 export const findUsers = async (query: string) => {
@@ -6,9 +8,9 @@ export const findUsers = async (query: string) => {
     const response = await fetch(baseUrl + queryParam + "&per_page=10", {
       headers: { Accept: "application/vnd.github.text-match+json" },
     });
+    const users: UsersData = await response.json();
 
-    const users = await response.json();
-    return users.items;
+    if (response.ok) return users;
   } catch (err) {
     console.error(err);
   }

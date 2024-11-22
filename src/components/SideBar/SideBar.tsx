@@ -1,21 +1,13 @@
 import * as S from "./SideBar.styled";
-import { useState, useEffect, ChangeEvent } from "react";
-import { findUsers } from "../../api.ts";
+import { ChangeEvent } from "react";
 
 type Props = {
-  setUsers: (users: []) => void;
+  setSearch: (query: string) => void;
 };
 
-export default function SideBar({ setUsers }: Props) {
-  const [searchVal, setSearchVal] = useState("");
-
-  useEffect(() => {
-    if (searchVal) findUsers(searchVal).then((users) => setUsers(users));
-  }, [searchVal, setUsers]);
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchVal(e.target.value);
-  };
+export default function SideBar({ setSearch }: Props) {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setSearch(e.target.value);
 
   return (
     <>
@@ -25,7 +17,6 @@ export default function SideBar({ setUsers }: Props) {
           name="search"
           type="text"
           placeholder="Enter user login for start search"
-          value={searchVal}
           onChange={onChange}
         />
       </S.Wrapper>
