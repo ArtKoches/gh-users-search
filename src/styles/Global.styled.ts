@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         font-family: "Roboto", sans-serif;
+        background-color: #F6F6F6;
     }
 
     div,
