@@ -1,45 +1,39 @@
 import styled from "styled-components";
 
 export const User = styled.div`
+  margin-left: 400px;
+  inset: 0;
+  position: fixed;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  background-color: white;
-  border-radius: 1rem;
-  margin-top: 2rem;
-  padding: 1.5rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  padding: 3rem;
 `;
 
 export const Wrapper = styled.ul`
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid cornflowerblue;
+  padding: 0.4rem;
+  border: 1px solid #7f5af0;
   border-radius: 0.5rem;
-  transition: background-color 0.3s ease-in-out;
-
-  a {
-    color: black;
-  }
+  transition: background-color 0.4s ease-in-out;
 
   &:hover {
-    background-color: cornflowerblue;
+    background-color: #7f5af0;
+    box-shadow: 0 0 10px 6px rgba(127, 90, 240, 0.2);
+
+    a {
+      color: white;
+    }
   }
 `;
 
 export const List = styled.li`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: filter 0.3s ease-in-out;
-
-  &:hover {
-    color: white;
-  }
+  gap: 0.4rem;
 `;
 
 export const Avatar = styled.img`
-  width: 70px;
+  width: 90px;
   border-radius: 50%;
 `;
 

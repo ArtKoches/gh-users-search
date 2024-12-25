@@ -18,8 +18,8 @@ export default function SideBar({ users, setSearch }: Props) {
         <S.Search>
           <S.SearchInput
             name="search"
-            type="text"
-            placeholder="Enter user login for start search"
+            type="search"
+            placeholder="Login..."
             onChange={onChange}
           />
           {/*if there is matches, display number of results*/}
