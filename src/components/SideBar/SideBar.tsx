@@ -22,7 +22,6 @@ export default function SideBar({ users, setSearch }: Props) {
             placeholder="Login..."
             onChange={onChange}
           />
-          {/*if there is matches, display number of results*/}
           {users.total_count > 0 && (
             <S.ResultCounter>{users.total_count} results</S.ResultCounter>
           )}

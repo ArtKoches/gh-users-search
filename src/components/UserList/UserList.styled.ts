@@ -2,43 +2,41 @@ import styled from "styled-components";
 
 export const User = styled.div`
   margin-left: 400px;
-  inset: 0;
-  position: fixed;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding: 3rem;
+  padding: 1.5rem;
+  border: 1px solid white;
+  border-radius: 0 0 0.5rem 0;
+  background-color: white;
+  box-shadow: 0 0 8px 12px rgba(34, 60, 80, 0.2);
 `;
 
 export const Wrapper = styled.ul`
-  padding: 0.4rem;
-  border: 1px solid #7f5af0;
-  border-radius: 0.5rem;
-  transition: background-color 0.4s ease-in-out;
-
-  &:hover {
-    background-color: #7f5af0;
-    box-shadow: 0 0 10px 6px rgba(127, 90, 240, 0.2);
-
-    a {
-      color: white;
-    }
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
 `;
 
 export const List = styled.li`
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border: 1px solid #ff8906;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #ff8906;
+    color: white;
+  }
 `;
 
 export const Avatar = styled.img`
-  width: 90px;
+  width: 70px;
   border-radius: 50%;
 `;
 
 export const Login = styled.h3`
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-wrap: nowrap;
 `;

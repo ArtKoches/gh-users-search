@@ -35,7 +35,7 @@ export const SearchInput = styled.input`
   outline: none;
 
   &:focus {
-    border-color: #7f5af0;
+    border-color: #ff8906;
   }
 `;
 
