@@ -1,34 +1,38 @@
-import { useState } from "react";
+import { GlobalStyle } from "../styles/Global.styled.ts";
+import { Container } from "../styles/Common.styled.ts";
 import { useUsers } from "../hooks/useUsers.ts";
 import { usePagination } from "../hooks/usePagination.ts";
-import SideBar from "../components/SideBar/SideBar.tsx";
+import SearchBar from "../components/SearchBar/SearchBar.tsx";
 import UserList from "../components/UserList/UserList.tsx";
-import { GlobalStyle } from "../styles/Global.styled.ts";
-import Pagination from "../components/Pagination/Pagination.tsx";
-import { Container } from "../styles/Common.styled.ts";
 
 export default function Root() {
-  const [search, setSearch] = useState("");
-  const { page, selectPage, goToPrevPage, goToNextPage, getPaginationGroup } =
-    usePagination();
-  const { users } = useUsers(search, page);
+  const { search, onChange, users, totalCount, page, itemsPerPage, goToPage } =
+    useUsers();
+  const { totalPages, visiblePages } = usePagination(
+    page,
+    itemsPerPage,
+    totalCount,
+  );
 
   console.log(users);
   console.log(page);
-  console.log(getPaginationGroup());
 
   return (
     <>
       <GlobalStyle />
       <Container>
-        <SideBar users={users} setSearch={setSearch} />
-        <UserList users={users} />
-        <Pagination
+        <SearchBar
+          search={search}
+          onChange={onChange}
+          totalCount={totalCount}
+        />
+        <UserList
           users={users}
-          selectPage={selectPage}
-          goToPrevPage={goToPrevPage}
-          goToNextPage={goToNextPage}
-          getPaginationGroup={getPaginationGroup}
+          totalCount={totalCount}
+          page={page}
+          totalPages={totalPages}
+          visiblePages={visiblePages}
+          goToPage={goToPage}
         />
       </Container>
     </>

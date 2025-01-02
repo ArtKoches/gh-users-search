@@ -33,12 +33,12 @@ export const GlobalStyle = createGlobalStyle`
     body {
         width: 100%;
         height: 100%;      
-        font-family: "Montserrat", sans-serif;
-        background-color: #d1d1d1;  
+        font-family: "Montserrat", sans-serif; 
     }   
     
     a,
-    input
+    input,
+    button
      {
         font-family: "Montserrat", sans-serif;  
         font-weight: 500;

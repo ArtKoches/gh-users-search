@@ -1,23 +1,33 @@
-import { useState } from "react";
-import * as React from "react";
+import { useMemo } from "react";
 
-export const usePagination = () => {
-  const [page, setPage] = useState(1);
-  const pageLimit = 10;
+export const usePagination = (
+  page: number,
+  itemsPerPage: number,
+  totalCount: number,
+) => {
+  // max numbers of pages displayed
+  const maxVisiblePages = 5;
 
-  const goToPrevPage = () => setPage((prev) => --prev);
-  const goToNextPage = () => setPage((prev) => ++prev);
+  // calc the total number of pages
+  const totalPages = useMemo(
+    () => Math.ceil(totalCount / itemsPerPage),
+    [itemsPerPage, totalCount],
+  );
 
-  const selectPage = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const button = (e.target as HTMLButtonElement).textContent;
-    const pageNumber = Number(button);
-    setPage(pageNumber);
-  };
+  //calc the page numbers to display
+  const visiblePages = useMemo(() => {
+    const halfVisible = Math.floor(maxVisiblePages / 2);
 
-  const getPaginationGroup = () => {
-    const start = Math.floor((page - 1) / pageLimit) * pageLimit;
-    return new Array(pageLimit).fill("").map((_, idx) => start + idx + 1);
-  };
+    // calc the start and end pages to display
+    const startPage = Math.max(1, page - halfVisible);
+    const endPage = Math.min(totalPages, page + halfVisible);
 
-  return { page, goToPrevPage, goToNextPage, selectPage, getPaginationGroup };
+    // generating an array of visible pages
+    return Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage + i,
+    );
+  }, [page, totalPages]);
+
+  return { totalPages, visiblePages };
 };

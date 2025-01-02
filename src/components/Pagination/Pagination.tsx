@@ -1,33 +1,46 @@
 import * as S from "./Pagination.styled";
-import * as React from "react";
-import { UsersData } from "../../lib/types.ts";
 
 type Props = {
-  users: UsersData;
-  selectPage: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  goToPrevPage: () => void;
-  goToNextPage: () => void;
-  getPaginationGroup: () => number[];
+  page: number;
+  totalPages: number;
+  visiblePages: number[];
+  goToPage: (page: number) => void;
 };
 
 export default function Pagination({
-  users,
-  selectPage,
-  goToPrevPage,
-  goToNextPage,
-  getPaginationGroup,
+  page,
+  totalPages,
+  visiblePages,
+  goToPage,
 }: Props) {
   return (
-    <>
-      <S.Wrapper hidden={!users.total_count}>
-        <button onClick={goToPrevPage}>Prev</button>
-        {getPaginationGroup().map((item, index) => (
-          <button key={index} onClick={selectPage}>
-            {item}
-          </button>
-        ))}
-        <button onClick={goToNextPage}>Next</button>
-      </S.Wrapper>
-    </>
+    <S.Wrapper>
+      <S.PrevBtn
+        title={"Previous Page"}
+        onClick={() => goToPage(--page)}
+        disabled={page === 1}
+      >
+        {"<"}
+      </S.PrevBtn>
+
+      {visiblePages.map((pageNum) => (
+        <S.Button
+          key={pageNum}
+          title={`${pageNum}`}
+          onClick={() => goToPage(pageNum)}
+          $active={pageNum === page}
+        >
+          {pageNum}
+        </S.Button>
+      ))}
+
+      <S.NextBtn
+        title={"Next Page"}
+        onClick={() => goToPage(++page)}
+        disabled={page === totalPages}
+      >
+        {">"}
+      </S.NextBtn>
+    </S.Wrapper>
   );
 }
