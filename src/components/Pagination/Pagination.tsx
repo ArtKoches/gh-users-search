@@ -28,7 +28,7 @@ export default function Pagination({
           key={pageNum}
           title={`${pageNum}`}
           onClick={() => goToPage(pageNum)}
-          $active={pageNum === page}
+          $isActive={pageNum === page}
         >
           {pageNum}
         </S.Button>

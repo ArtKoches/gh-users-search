@@ -10,17 +10,17 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Button = styled.button<{ $active?: boolean }>`
+export const Button = styled.button<{ $isActive?: boolean }>`
   width: 42px;
   height: 42px;
   margin-right: 0.3rem;
-  color: ${(props) => props.$active && "white"};
-  background-color: ${(props) => props.$active && "#ff8906"};
-  border: 1px solid ${(props) => (props.$active ? "transparent" : "#ff8906")};
+  color: ${(props) => props.$isActive && "white"};
+  background-color: ${(props) => props.$isActive && "#ff8906"};
+  border: 1px solid ${(props) => (props.$isActive ? "transparent" : "#ff8906")};
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
-  cursor: ${(props) => props.$active && "not-allowed"};
+  cursor: ${(props) => props.$isActive && "not-allowed"};
   transition: background-color 0.3s ease-in-out;
 
   &:hover {

@@ -9,3 +9,5 @@ export interface User {
   avatar_url: string;
   html_url: string;
 }
+
+export type SortOrder = "asc" | "desc";

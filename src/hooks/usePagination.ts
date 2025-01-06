@@ -2,21 +2,20 @@ import { useMemo } from "react";
 
 export const usePagination = (
   page: number,
-  itemsPerPage: number,
+  ITEMS_PER_PAGE: number,
   totalCount: number,
 ) => {
-  // max numbers of pages displayed
-  const maxVisiblePages = 5;
+  const MAX_VISIBLE_PAGES = 5; // max numbers of pages displayed
 
   // calc the total number of pages
   const totalPages = useMemo(
-    () => Math.ceil(totalCount / itemsPerPage),
-    [itemsPerPage, totalCount],
+    () => Math.ceil(totalCount / ITEMS_PER_PAGE),
+    [ITEMS_PER_PAGE, totalCount],
   );
 
   //calc the page numbers to display
   const visiblePages = useMemo(() => {
-    const halfVisible = Math.floor(maxVisiblePages / 2);
+    const halfVisible = Math.floor(MAX_VISIBLE_PAGES / 2);
 
     // calc the start and end pages to display
     const startPage = Math.max(1, page - halfVisible);

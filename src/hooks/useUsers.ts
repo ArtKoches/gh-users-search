@@ -1,71 +1,81 @@
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { User } from "../lib/types.ts";
 
-export const useUsers = () => {
-  // max data(users) limit per page
-  const itemsPerPage = 25;
+export const useUsers = (sortOrder: string) => {
+  const ITEMS_PER_PAGE = 15; // Max users per page
 
-  const [search, setSearch] = useState("");
+  const [searchVal, setSearchVal] = useState("");
   const [users, setUsers] = useState<User[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setPage(1);
+  // Handler for search input change
+  const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSearchVal(e.target.value);
+    setPage(1); // Reset to first page on search input change
   }, []);
 
+  // Change current page
   const goToPage = useCallback((page: number) => setPage(page), []);
 
-  // fetch users...
-  const fetchUsers = useCallback(async (query: string, pageNum: number) => {
-    if (!query.trim()) {
-      setUsers([]);
-      setTotalCount(0);
-      return;
-    }
+  // Fetch users from API
+  const fetchUsers = useCallback(
+    async (query: string, pageNum: number) => {
+      if (!query.trim()) {
+        setUsers([]);
+        setTotalCount(0);
+        return;
+      }
 
-    try {
-      const baseUrl = "https://api.github.com/search/users";
-      const token = import.meta.env.VITE_GITHUB_TOKEN;
-      const params = new URLSearchParams({
-        q: `${encodeURIComponent(query)} in:login`,
-        page: pageNum.toString(),
-        per_page: itemsPerPage.toString(),
-      });
+      setIsLoading(true);
 
-      console.log(params.toString());
-      console.log(token);
+      try {
+        const baseUrl = "https://api.github.com/search/users";
+        const token = import.meta.env.VITE_GITHUB_TOKEN;
+        const params = new URLSearchParams({
+          q: `${encodeURIComponent(query)} in:login`,
+          sort: "repositories",
+          order: sortOrder.toString(),
+          page: pageNum.toString(),
+          per_page: ITEMS_PER_PAGE.toString(),
+        });
 
-      const response = await fetch(`${baseUrl}?${params.toString()}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+        console.log(params.toString());
+        console.log(token);
 
-      // if (!response.ok) throw new Error("Failed to fetch users");
+        const response = await fetch(`${baseUrl}?${params.toString()}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      const data = await response.json();
-      setUsers(data.items ?? []);
-      setTotalCount(data.total_count ?? 0);
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
+        const data = await response.json();
+        setUsers(data.items ?? []);
+        setTotalCount(data.total_count ?? 0);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [sortOrder],
+  );
 
-  // debounce fetch
+  // Debounced effect to fetch users
   useEffect(() => {
-    const timeoutId = setTimeout(() => fetchUsers(search, page), 300);
-    return () => clearTimeout(timeoutId);
-  }, [fetchUsers, page, search]);
+    const debounceTimeout = setTimeout(() => fetchUsers(searchVal, page), 300);
+    return () => clearTimeout(debounceTimeout);
+  }, [fetchUsers, page, searchVal]);
 
   return {
-    search,
-    onChange,
+    searchVal,
+    handleSearchChange,
     users,
     totalCount,
-    itemsPerPage,
+    ITEMS_PER_PAGE,
     page,
     goToPage,
+    isLoading,
   };
 };
