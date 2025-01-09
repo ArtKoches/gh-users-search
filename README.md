@@ -2,53 +2,54 @@
 
 ---
 
-## Описание
+## Description
 
-**GitHub Users Search 2025** — это веб-приложение, разработанное на основе React, TypeScript и Styled Components. Оно позволяет находить пользователей GitHub по логину, отображать их основные данные и предоставлять удобную навигацию с помощью пагинации.
-
----
-
-## Функциональность
-
-- **Поиск пользователей**: быстрый поиск пользователей GitHub по логину.
-- **Пагинация**: удобный просмотр списка результатов с возможностью переключения страниц.
-- **Информация о пользователях**: отображение аватара, имени пользователя, диалогового окна с детальной информации о пользователе и ссылки на его профиль.
-- **Адаптивный интерфейс**: стильный дизайн, подходящий для любых устройств.
+**GitHub Users Search 2025** is a web application built with React, TypeScript, and Styled Components. It enables users to search for GitHub users by their username, display basic information about them, and navigate through results using pagination.
 
 ---
 
-## Технологии
+## Features
 
-- [React](https://reactjs.org/) — библиотека для создания пользовательских интерфейсов.
-- [TypeScript](https://www.typescriptlang.org/) — строго типизированный JavaScript.
-- [Styled Components](https://styled-components.com/) — библиотека для создания стилизованных компонентов.
-- [GitHub API](https://docs.github.com/en/rest) — API для получения данных о пользователях.
+- **User Search**: Quickly search for GitHub users by their username.
+- **Pagination**: Easily browse through the list of results with page navigation.
+- **User Information**: Display user avatars, usernames, a dialog with detailed information about user.
+- **Responsive Design**: Stylish and adaptable UI for all devices.
 
 ---
 
-## Установка и запуск
+## Technologies
 
-### Предварительные требования
+- [React](https://reactjs.org/) — A library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/) — A strongly typed superset of JavaScript.
+- [Styled Components](https://styled-components.com/) — A library for creating styled React components.
+- [GitHub API](https://docs.github.com/en/rest) — API for fetching user data from GitHub.
 
-- Установленный [Node.js](https://nodejs.org/) версии 14.x или выше.
-- Установленный [npm](https://www.npmjs.com/) или [yarn](https://yarnpkg.com/).
+---
 
-### Шаги
+## Installation and Setup
 
-1. Установите зависимости:
+### Prerequisites
+
+- Installed [Node.js](https://nodejs.org/) version 14.x or later.
+- Installed [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/).
+
+### Steps
+
+1. Install dependencies:
    npm i or npm install
-2. Настройте переменные окружения: Создайте файл .env в корне проекта и добавьте токен GitHub API:
-   VITE_GITHUB_TOKEN=your_github_api_token
-   
-   Для получения токена перейдите в GitHub Developer Settings (https://github.com/settings/tokens).
-3. Запустите проект:
-   npm start
-4. Откройте приложение в браузере по адресу http://localhost:5173.  
 
-#### Использование
-1.   Введите логин пользователя GitHub в строку поиска.
-2.   Навигируйте между страницами с помощью элементов управления пагинацией.
-3.   Кликните на имя пользователя, чтобы открыть диалоговое окно и узнать детальную информацию о пользователе и ссылку на профиль в GitHub.
+2. Configure environment variables: Create a .env file in the project root and add the GitHub API token:
+   VITE_GITHUB_TOKEN=your_github_api_token
+
+   To obtain a token, visit GitHub Developer Settings (https://github.com/settings/tokens).
+3. Start the project:
+   npm start
+4. Open the application in your browser at http://localhost:5173.  
+
+#### Usage
+1.   Enter a GitHub username in the search bar.
+2.   Navigate between pages using the pagination controls.
+3.   Click on a username to open a dialog with detailed user information and a link to GitHub profile.
 
 
 
