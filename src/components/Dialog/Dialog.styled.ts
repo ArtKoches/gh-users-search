@@ -33,4 +33,9 @@ export const DialogCloseButton = styled.button`
   &:hover {
     background-color: crimson;
   }
+
+  @media (max-width: 480px) {
+    display: block;
+    margin: 0 auto;
+  }
 `;

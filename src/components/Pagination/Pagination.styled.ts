@@ -14,8 +14,8 @@ export const Button = styled.button<{ $isActive?: boolean }>`
   width: 42px;
   height: 42px;
   margin-right: 0.3rem;
-  color: ${(props) => props.$isActive && "white"};
-  background-color: ${(props) => props.$isActive && "#ff8906"};
+  color: ${(props) => (props.$isActive ? "#fff" : "#000")};
+  background-color: ${(props) => (props.$isActive ? "#ff8906" : "#fff")};
   border: 1px solid ${(props) => (props.$isActive ? "transparent" : "#ff8906")};
   border-radius: 0.5rem;
   font-size: 1rem;
