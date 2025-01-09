@@ -33,8 +33,6 @@ export default function Root() {
   const { isOpen, setIsOpen, selectedUser, fetchUserDetails } =
     useSelectedUser(setIsLoading);
 
-  console.log(users);
-
   return (
     <>
       <GlobalStyle />

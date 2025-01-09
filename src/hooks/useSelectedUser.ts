@@ -9,8 +9,6 @@ export const useSelectedUser = (setIsLoading: (state: boolean) => void) => {
     null,
   );
 
-  console.log(selectedUser);
-
   const fetchUserDetails = useCallback(
     async (username: string) => {
       setIsLoading(true);

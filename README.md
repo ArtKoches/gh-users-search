@@ -8,6 +8,9 @@
 
 ---
 
+## Deploy
+- **https://github-users-search-2025.netlify.app/**
+
 ## Features
 
 - **User Search**: Quickly search for GitHub users by their username.
