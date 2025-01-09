@@ -13,6 +13,7 @@
 - **User Search**: Quickly search for GitHub users by their username.
 - **Pagination**: Easily browse through the list of results with page navigation.
 - **User Information**: Display user avatars, usernames, a dialog with detailed information about user.
+- **Results sort**: Sort results by repos Descending and Ascending.
 - **Responsive Design**: Stylish and adaptable UI for all devices.
 
 ---
@@ -48,8 +49,9 @@
 
 #### Usage
 1.   Enter a GitHub username in the search bar.
-2.   Navigate between pages using the pagination controls.
-3.   Click on a username to open a dialog with detailed user information and a link to GitHub profile.
+2.   Change the sorting results if necessary (it is set to Descending by default).  
+3.   Navigate between pages using the pagination controls.
+4.   Click on a username to open a dialog with detailed user information and a link to GitHub profile.
 
 
 
