@@ -2,7 +2,9 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { User } from "../lib/types.ts";
 
 export const useUsers = (sortOrder: string) => {
-  const ITEMS_PER_PAGE = 15; // Max users per page
+  const ITEMS_PER_PAGE = 12; // Max users per page
+  const BASE_URL = "https://api.github.com/search/users"; //Base API host
+  const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
   const [searchVal, setSearchVal] = useState("");
   const [users, setUsers] = useState<User[]>([]);
@@ -31,8 +33,6 @@ export const useUsers = (sortOrder: string) => {
       setIsLoading(true);
 
       try {
-        const baseUrl = "https://api.github.com/search/users";
-        const token = import.meta.env.VITE_GITHUB_TOKEN;
         const params = new URLSearchParams({
           q: `${encodeURIComponent(query)} in:login`,
           sort: "repositories",
@@ -41,12 +41,9 @@ export const useUsers = (sortOrder: string) => {
           per_page: ITEMS_PER_PAGE.toString(),
         });
 
-        console.log(params.toString());
-        console.log(token);
-
-        const response = await fetch(`${baseUrl}?${params.toString()}`, {
+        const response = await fetch(`${BASE_URL}?${params.toString()}`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${TOKEN}`,
           },
         });
 
@@ -59,7 +56,7 @@ export const useUsers = (sortOrder: string) => {
         setIsLoading(false);
       }
     },
-    [sortOrder],
+    [sortOrder, TOKEN],
   );
 
   // Debounced effect to fetch users
@@ -77,5 +74,6 @@ export const useUsers = (sortOrder: string) => {
     page,
     goToPage,
     isLoading,
+    setIsLoading,
   };
 };

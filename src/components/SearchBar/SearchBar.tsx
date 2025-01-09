@@ -27,7 +27,7 @@ export default function SearchBar({
           <S.SearchInput
             name="search"
             type="search"
-            placeholder="User login"
+            placeholder="Enter the user's login to start..."
             value={searchVal}
             onChange={handleSearchChange}
           />
@@ -35,19 +35,19 @@ export default function SearchBar({
         </S.SearchBlock>
 
         <S.Sort hidden={!totalCount}>
+          <S.SortTitle>Sort by repos:</S.SortTitle>
+
           <S.SortButton
-            title={"Sort by Repos (Descending)"}
             $isActive={order === "desc"}
             onClick={() => onSortOrder("desc")}
           >
-            Sort by repos Descending
+            Descending
           </S.SortButton>
           <S.SortButton
-            title={"Sort by Repos (Ascending)"}
             $isActive={order === "asc"}
             onClick={() => onSortOrder("asc")}
           >
-            Sort by repos Ascending
+            Ascending
           </S.SortButton>
         </S.Sort>
 

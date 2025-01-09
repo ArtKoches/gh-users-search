@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { spin } from "../../styles/Common.styled.ts";
 
 export const Wrapper = styled.div`
-  max-width: 400px;
+  max-width: 450px;
 
   @media (max-width: 480px) {
     max-width: 350px;
@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
 export const Logo = styled.img`
   width: 100%;
   border-radius: 1rem;
-  box-shadow: 0 0 8px 0 #fff;
 `;
 
 export const Search = styled.div`
@@ -21,10 +20,6 @@ export const Search = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-
-  @media (max-width: 480px) {
-    gap: 0.5rem;
-  }
 `;
 
 export const SearchBlock = styled.div`
@@ -45,8 +40,7 @@ export const SearchInput = styled.input`
   }
 
   @media (max-width: 480px) {
-    font-size: 1rem;
-    height: 40px;
+    font-size: 0.9rem;
   }
 `;
 
@@ -64,6 +58,7 @@ export const Spinner = styled.div`
 
 export const Sort = styled.div`
   display: ${(props) => (props.hidden ? "none" : "flex")};
+  align-items: center;
   gap: 1rem;
 
   @media (max-width: 480px) {
@@ -71,16 +66,26 @@ export const Sort = styled.div`
   }
 `;
 
+export const SortTitle = styled.h4`
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: white;
+  text-wrap: nowrap;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+`;
+
 export const SortButton = styled.button<{ $isActive?: boolean }>`
-  width: 150px;
-  padding: 1rem;
+  width: 100%;
+  padding: 0.7rem;
   color: white;
   background-color: ${(props) => (props.$isActive ? "#ff8906" : "transparent")};
   border: 1px solid #ff8906;
   border-radius: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
-  outline: none;
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
@@ -88,14 +93,13 @@ export const SortButton = styled.button<{ $isActive?: boolean }>`
   }
 
   @media (max-width: 480px) {
-    width: 120px;
+    font-size: 0.9rem;
     padding: 0.5rem;
-    font-size: 0.8rem;
   }
 `;
 
 export const ResultCounter = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: white;
   text-wrap: nowrap;

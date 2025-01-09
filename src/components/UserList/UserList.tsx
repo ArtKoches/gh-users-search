@@ -1,6 +1,5 @@
 import * as S from "./UserList.styled.ts";
 import { User } from "../../lib/types.ts";
-import { Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination.tsx";
 
 type Props = {
@@ -10,6 +9,7 @@ type Props = {
   totalPages: number;
   visiblePages: number[];
   goToPage: (page: number) => void;
+  onUserClick: (user: string) => void;
 };
 
 export default function UserList({
@@ -19,16 +19,19 @@ export default function UserList({
   totalPages,
   visiblePages,
   goToPage,
+  onUserClick,
 }: Props) {
   return (
     <S.User hidden={!totalCount}>
       <S.Wrapper>
         {users.map((user) => (
-          <S.List key={user.id}>
+          <S.List
+            key={user.id}
+            title={`${user.login} profile details`}
+            onClick={() => onUserClick(user.login)}
+          >
             <S.Avatar src={user.avatar_url} alt="avatar" />
-            <Link to={user.html_url} target="_blank" rel="noopener noreferrer">
-              <S.Login>{user.login}</S.Login>
-            </Link>
+            <S.Login>{user.login}</S.Login>
           </S.List>
         ))}
       </S.Wrapper>

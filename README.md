@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+# GitHub Users Search 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Описание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**GitHub Users Search 2025** — это веб-приложение, разработанное на основе React, TypeScript и Styled Components. Оно позволяет находить пользователей GitHub по логину, отображать их основные данные и предоставлять удобную навигацию с помощью пагинации.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Функциональность
 
-- Configure the top-level `parserOptions` property like this:
+- **Поиск пользователей**: быстрый поиск пользователей GitHub по логину.
+- **Пагинация**: удобный просмотр списка результатов с возможностью переключения страниц.
+- **Информация о пользователях**: отображение аватара, имени пользователя, диалогового окна с детальной информации о пользователе и ссылки на его профиль.
+- **Адаптивный интерфейс**: стильный дизайн, подходящий для любых устройств.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Технологии
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- [React](https://reactjs.org/) — библиотека для создания пользовательских интерфейсов.
+- [TypeScript](https://www.typescriptlang.org/) — строго типизированный JavaScript.
+- [Styled Components](https://styled-components.com/) — библиотека для создания стилизованных компонентов.
+- [GitHub API](https://docs.github.com/en/rest) — API для получения данных о пользователях.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## Установка и запуск
+
+### Предварительные требования
+
+- Установленный [Node.js](https://nodejs.org/) версии 14.x или выше.
+- Установленный [npm](https://www.npmjs.com/) или [yarn](https://yarnpkg.com/).
+
+### Шаги
+
+1. Установите зависимости:
+   npm i or npm install
+2. Настройте переменные окружения: Создайте файл .env в корне проекта и добавьте токен GitHub API:
+   VITE_GITHUB_TOKEN=your_github_api_token
+   
+   Для получения токена перейдите в GitHub Developer Settings (https://github.com/settings/tokens).
+3. Запустите проект:
+   npm start
+4. Откройте приложение в браузере по адресу http://localhost:5173.  
+
+#### Использование
+1.   Введите логин пользователя GitHub в строку поиска.
+2.   Навигируйте между страницами с помощью элементов управления пагинацией.
+3.   Кликните на имя пользователя, чтобы открыть диалоговое окно и узнать детальную информацию о пользователе и ссылку на профиль в GitHub.
+
+
+
+
+
+
+
+
+
