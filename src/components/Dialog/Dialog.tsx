@@ -13,7 +13,9 @@ export default function Dialog({ isOpen, onClose, children }: Props) {
   return (
     <S.DialogWrapper ref={dialogRef} open={isOpen}>
       {children}
-      <S.DialogCloseButton onClick={onClose}>Close</S.DialogCloseButton>
+      <S.DialogCloseButton title={"Close dialog"} onClick={onClose}>
+        X
+      </S.DialogCloseButton>
     </S.DialogWrapper>
   );
 }

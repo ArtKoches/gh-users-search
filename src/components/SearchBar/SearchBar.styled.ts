@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   max-width: 450px;
 
   @media (max-width: 480px) {
-    max-width: 350px;
+    max-width: 300px;
   }
 `;
 
@@ -20,6 +20,11 @@ export const Search = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 480px) {
+    margin: 0.9rem 0;
+    gap: 0.6rem;
+  }
 `;
 
 export const SearchBlock = styled.div`
@@ -73,7 +78,7 @@ export const SortTitle = styled.h4`
   text-wrap: nowrap;
 
   @media (max-width: 480px) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -93,7 +98,7 @@ export const SortButton = styled.button<{ $isActive?: boolean }>`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding: 0.5rem;
   }
 `;

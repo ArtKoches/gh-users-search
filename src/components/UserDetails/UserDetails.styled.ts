@@ -6,11 +6,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   place-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem 0;
 
-  @media (max-width: 600px) {
+  @media (orientation: landscape) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 480px) {
+    gap: 0.5rem;
   }
 `;
 
@@ -19,6 +24,9 @@ export const Avatar = styled.img`
   border: 3px solid #ff8906;
   border-radius: 50%;
 
+  @media (orientation: landscape) {
+    width: 100px;
+  }
   @media (max-width: 600px) {
     width: 100px;
   }
@@ -32,6 +40,9 @@ export const DescList = styled.dl`
   background-color: white;
   border-radius: 0.5rem;
 
+  @media (orientation: landscape) {
+    font-size: 0.8rem;
+  }
   @media (max-width: 600px) {
     font-size: 0.8rem;
   }
@@ -52,13 +63,17 @@ export const DescDetails = styled.dd`
 `;
 
 export const GoToProfileLink = styled(Link)`
-  color: white;
+  color: #fff;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
     color: #ff8906;
     text-decoration: none;
   }
 
+  @media (orientation: landscape) {
+    font-size: 0.8rem;
+  }
   @media (max-width: 600px) {
     font-size: 0.8rem;
   }

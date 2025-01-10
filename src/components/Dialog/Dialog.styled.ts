@@ -3,10 +3,10 @@ import { fadeIn } from "../../styles/Common.styled.ts";
 
 export const DialogWrapper = styled.dialog`
   width: 350px;
-  place-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
+  text-align: right;
   transform: translate(-50%, -50%);
   padding: 1rem;
   background-color: #111827;
@@ -15,27 +15,34 @@ export const DialogWrapper = styled.dialog`
   box-shadow: 0 0 10px 0 #ff8906;
   animation: ${fadeIn} 1s ease-in-out;
 
+  @media (orientation: landscape) {
+    width: 300px;
+    padding: 0.5rem;
+    text-align: center;
+  }
   @media (max-width: 480px) {
     width: 300px;
     padding: 0.5rem;
+    text-align: center;
   }
 `;
 
 export const DialogCloseButton = styled.button`
-  padding: 0.7rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   color: white;
   background-color: transparent;
-  border: 1px solid crimson;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease-in-out;
+  border: none;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    background-color: crimson;
+    color: #ff8906;
   }
 
+  @media (orientation: landscape) {
+    font-size: 0.7rem;
+  }
   @media (max-width: 480px) {
-    display: block;
-    margin: 0 auto;
+    font-size: 0.7rem;
   }
 `;
