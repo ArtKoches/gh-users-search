@@ -25,6 +25,5 @@ export const Container = styled.div`
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #111827;
   animation: ${fadeIn} 1s ease-in-out;
 `;

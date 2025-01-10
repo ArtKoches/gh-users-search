@@ -6,7 +6,6 @@ export const DialogWrapper = styled.dialog`
   position: fixed;
   top: 50%;
   left: 50%;
-  text-align: right;
   transform: translate(-50%, -50%);
   padding: 1rem;
   background-color: #111827;
@@ -15,20 +14,14 @@ export const DialogWrapper = styled.dialog`
   box-shadow: 0 0 10px 0 #ff8906;
   animation: ${fadeIn} 1s ease-in-out;
 
-  @media (orientation: landscape) {
+  @media (max-width: 480px) and (orientation: landscape) {
     width: 300px;
     padding: 0.5rem;
-    text-align: center;
-  }
-  @media (max-width: 480px) {
-    width: 300px;
-    padding: 0.5rem;
-    text-align: center;
   }
 `;
 
 export const DialogCloseButton = styled.button`
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: white;
   background-color: transparent;
@@ -39,10 +32,7 @@ export const DialogCloseButton = styled.button`
     color: #ff8906;
   }
 
-  @media (orientation: landscape) {
-    font-size: 0.7rem;
-  }
-  @media (max-width: 480px) {
-    font-size: 0.7rem;
+  @media (max-width: 480px) and (orientation: landscape) {
+    font-size: 0.8rem;
   }
 `;

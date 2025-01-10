@@ -8,13 +8,10 @@ export const Wrapper = styled.div`
   gap: 1rem;
   padding: 0.5rem 0;
 
-  @media (orientation: landscape) {
+  @media (max-width: 480px) and (orientation: landscape) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  @media (max-width: 480px) {
+    justify-content: space-around;
     gap: 0.5rem;
   }
 `;
@@ -24,10 +21,7 @@ export const Avatar = styled.img`
   border: 3px solid #ff8906;
   border-radius: 50%;
 
-  @media (orientation: landscape) {
-    width: 100px;
-  }
-  @media (max-width: 600px) {
+  @media (max-width: 480px) and (orientation: landscape) {
     width: 100px;
   }
 `;
@@ -37,13 +31,11 @@ export const DescList = styled.dl`
   grid-template-columns: max-content auto;
   gap: 0.3rem;
   padding: 0.3rem;
+  font-size: 0.9rem;
   background-color: white;
   border-radius: 0.5rem;
 
-  @media (orientation: landscape) {
-    font-size: 0.8rem;
-  }
-  @media (max-width: 600px) {
+  @media (max-width: 480px) and (orientation: landscape) {
     font-size: 0.8rem;
   }
 `;
@@ -63,6 +55,7 @@ export const DescDetails = styled.dd`
 `;
 
 export const GoToProfileLink = styled(Link)`
+  font-size: 0.9rem;
   color: #fff;
   transition: color 0.3s ease-in-out;
 
@@ -71,10 +64,7 @@ export const GoToProfileLink = styled(Link)`
     text-decoration: none;
   }
 
-  @media (orientation: landscape) {
-    font-size: 0.8rem;
-  }
-  @media (max-width: 600px) {
+  @media (max-width: 480px) and (orientation: landscape) {
     font-size: 0.8rem;
   }
 `;

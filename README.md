@@ -1,15 +1,15 @@
-# GitHub Users Search 2025
+# GitHub Users Search-Bar
 
 ---
 
 ## Description
 
-**GitHub Users Search 2025** is a web application built with React, TypeScript, and Styled Components. It enables users to search for GitHub users by their username, display basic information about them, and navigate through results using pagination.
+**GitHub Users Search-Bar** is a web application built with React, TypeScript, and Styled Components. It enables users to search for GitHub users by their username, display basic information about them, and navigate through results using pagination.
 
 ---
 
 ## Deploy
-- **https://github-users-search-2025.netlify.app/**
+- **https://github-users-search-bar.netlify.app/**   
 
 ## Features
 
