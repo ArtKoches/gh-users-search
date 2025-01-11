@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { spin } from "../../styles/Common.styled.ts";
 
 export const Wrapper = styled.div`
-  max-width: 450px;
+  width: 450px;
 
   @media (max-width: 480px) {
-    max-width: 300px;
+    width: 300px;
   }
 `;
 

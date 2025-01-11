@@ -72,7 +72,7 @@ export const Avatar = styled.img`
 export const Login = styled.h3`
   font-size: 0.9rem;
   font-weight: 600;
-  text-wrap: nowrap;
+  word-break: break-word;
 
   @media (max-width: 480px) {
     font-size: 0.8rem;

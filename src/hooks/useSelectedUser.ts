@@ -3,6 +3,7 @@ import { UserDetailsType } from "../lib/types.ts";
 
 export const useSelectedUser = (setIsLoading: (state: boolean) => void) => {
   const BASE_URL = "https://api.github.com/users";
+  const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<UserDetailsType | null>(
@@ -14,7 +15,11 @@ export const useSelectedUser = (setIsLoading: (state: boolean) => void) => {
       setIsLoading(true);
 
       try {
-        const response = await fetch(`${BASE_URL}/${username}`);
+        const response = await fetch(`${BASE_URL}/${username}`, {
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+          },
+        });
         const data = await response.json();
 
         setSelectedUser(data ?? null);
@@ -25,7 +30,7 @@ export const useSelectedUser = (setIsLoading: (state: boolean) => void) => {
         setIsLoading(false);
       }
     },
-    [setIsLoading],
+    [setIsLoading, TOKEN],
   );
 
   return { isOpen, setIsOpen, selectedUser, fetchUserDetails };

@@ -24,6 +24,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1.5rem;
   animation: ${fadeIn} 1s ease-in-out;
 `;

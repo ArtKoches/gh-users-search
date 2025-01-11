@@ -4,14 +4,11 @@ import { Link } from "react-router-dom";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  place-items: center;
   gap: 1rem;
-  padding: 0.5rem 0;
+  place-items: center;
 
-  @media (max-width: 480px) and (orientation: landscape) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  @media (max-width: 480px) {
+    margin-bottom: 1rem;
     gap: 0.5rem;
   }
 `;
@@ -21,7 +18,7 @@ export const Avatar = styled.img`
   border: 3px solid #ff8906;
   border-radius: 50%;
 
-  @media (max-width: 480px) and (orientation: landscape) {
+  @media (max-width: 480px) {
     width: 100px;
   }
 `;
@@ -29,14 +26,15 @@ export const Avatar = styled.img`
 export const DescList = styled.dl`
   display: grid;
   grid-template-columns: max-content auto;
-  gap: 0.3rem;
-  padding: 0.3rem;
+  gap: 0.5rem;
+  padding: 1rem;
   font-size: 0.9rem;
   background-color: white;
   border-radius: 0.5rem;
 
-  @media (max-width: 480px) and (orientation: landscape) {
+  @media (max-width: 480px) {
     font-size: 0.8rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -51,20 +49,20 @@ export const DescTitle = styled.dt`
 
 export const DescDetails = styled.dd`
   grid-column-start: 2;
-  font-style: italic;
+  word-break: break-word;
 `;
 
 export const GoToProfileLink = styled(Link)`
   font-size: 0.9rem;
-  color: #fff;
+  color: #ff8906;
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #ff8906;
+    color: #fff;
     text-decoration: none;
   }
 
-  @media (max-width: 480px) and (orientation: landscape) {
+  @media (max-width: 480px) {
     font-size: 0.8rem;
   }
 `;
