@@ -27,7 +27,7 @@ export const Avatar = styled.img`
     width: 100px;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 110px;
+    width: 100px;
   }
 `;
 
