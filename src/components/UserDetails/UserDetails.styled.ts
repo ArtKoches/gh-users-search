@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     gap: 0.5rem;
   }
 `;
@@ -25,11 +27,12 @@ export const Avatar = styled.img`
     width: 100px;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 90px;
+    width: 125px;
   }
 `;
 
 export const DescList = styled.dl`
+  max-width: 70%;
   display: grid;
   grid-template-columns: max-content auto;
   gap: 0.5rem;
@@ -65,11 +68,11 @@ export const DescDetails = styled.dd`
 
 export const GoToProfileLink = styled(Link)`
   font-size: 0.9rem;
-  color: #ff8906;
+  color: #fff;
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #fff;
+    color: #ff8906;
     text-decoration: none;
   }
 
@@ -78,6 +81,5 @@ export const GoToProfileLink = styled(Link)`
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
     font-size: 0.8rem;
-    text-align: center;
   }
 `;
