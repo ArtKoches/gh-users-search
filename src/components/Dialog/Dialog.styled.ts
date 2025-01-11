@@ -19,7 +19,7 @@ export const DialogWrapper = styled.dialog`
     padding: 0.5rem;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 70%;
+    width: 63%;
     max-height: 90%;
     overflow-y: auto;
     padding: 0.8rem;
