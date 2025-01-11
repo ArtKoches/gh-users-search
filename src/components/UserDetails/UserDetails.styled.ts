@@ -27,12 +27,11 @@ export const Avatar = styled.img`
     width: 100px;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 125px;
+    width: 110px;
   }
 `;
 
 export const DescList = styled.dl`
-  max-width: 70%;
   display: grid;
   grid-template-columns: max-content auto;
   gap: 0.5rem;
@@ -46,6 +45,7 @@ export const DescList = styled.dl`
     padding: 0.5rem;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
+    max-width: 70%;
     padding: 0.5rem;
     font-size: 0.8rem;
     gap: 0.3rem;
