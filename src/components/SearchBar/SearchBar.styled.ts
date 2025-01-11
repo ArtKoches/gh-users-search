@@ -7,9 +7,6 @@ export const Wrapper = styled.div`
   @media (max-width: 480px) {
     width: 300px;
   }
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 400px;
-  }
 `;
 
 export const Logo = styled.img`
