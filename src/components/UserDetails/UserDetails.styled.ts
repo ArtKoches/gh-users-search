@@ -46,7 +46,6 @@ export const DescList = styled.dl`
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
     padding: 0.5rem;
     gap: 0.3rem;
-    font-size: 0.7rem;
   }
 `;
 
