@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import * as S from "./Dialog.styled.ts";
 
 type Props = {
@@ -8,14 +8,26 @@ type Props = {
 };
 
 export default function Dialog({ isOpen, onClose, children }: Props) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
+  // Outside click handler
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (
+        isOpen &&
+        dialogRef.current &&
+        !dialogRef.current.contains(e.target as Node)
+      )
+        onClose();
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [isOpen, onClose]);
 
   return (
     <S.DialogWrapper ref={dialogRef} open={isOpen}>
       {children}
-      <S.DialogCloseButton title={"Close dialog"} onClick={onClose}>
-        X
-      </S.DialogCloseButton>
     </S.DialogWrapper>
   );
 }
