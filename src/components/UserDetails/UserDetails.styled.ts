@@ -47,7 +47,6 @@ export const DescList = styled.dl`
     padding: 0.5rem;
     gap: 0.3rem;
     font-size: 0.8rem;
-    font-style: italic;
   }
 `;
 
