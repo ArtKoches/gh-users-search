@@ -1,50 +1,66 @@
-# React + TypeScript + Vite
+# GitHub Users Search-Bar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**GitHub Users Search-Bar** is a web application built with React, TypeScript, and Styled Components. It enables users to search for GitHub users by their username, display basic information about them, and navigate through results using pagination.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Deploy
+- **https://github-users-search-bar.netlify.app/**   
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **User Search**: Quickly search for GitHub users by their username.
+- **Pagination**: Easily browse through the list of results with page navigation.
+- **User Information**: Display user avatars, usernames, a dialog with detailed information about user.
+- **Results sort**: Sort results by repos Descending and Ascending.
+- **Responsive Design**: Stylish and adaptable UI for all devices.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Technologies
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- [React](https://reactjs.org/) — A library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/) — A strongly typed superset of JavaScript.
+- [Styled Components](https://styled-components.com/) — A library for creating styled React components.
+- [GitHub API](https://docs.github.com/en/rest) — API for fetching user data from GitHub.
+
+---
+
+## Installation and Setup
+
+### Prerequisites
+
+- Installed [Node.js](https://nodejs.org/) version 14.x or later.
+- Installed [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/).
+
+### Steps
+
+1. Install dependencies:
+   npm i or npm install
+
+2. Configure environment variables: Create a .env file in the project root and add the GitHub API token:
+   VITE_GITHUB_TOKEN=your_github_api_token
+
+   To obtain a token, visit GitHub Developer Settings (https://github.com/settings/tokens).
+3. Start the project:
+   npm start
+4. Open the application in your browser at http://localhost:5173.  
+
+#### Usage
+1.   Enter a GitHub username in the search bar.
+2.   Change the sorting results if necessary (it is set to Descending by default).  
+3.   Navigate between pages using the pagination controls.
+4.   Click on a username to open a dialog with detailed user information and a link to GitHub profile.
+
+
+
+
+
+
+
+
+
