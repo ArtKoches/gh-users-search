@@ -11,10 +11,6 @@ export const Wrapper = styled.div`
     margin-bottom: 1rem;
     gap: 0.5rem;
   }
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
 `;
 
 export const Avatar = styled.img`
@@ -26,7 +22,7 @@ export const Avatar = styled.img`
     width: 100px;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 100px;
+    width: 125px;
   }
 `;
 
@@ -42,10 +38,6 @@ export const DescList = styled.dl`
   @media (max-width: 480px) {
     font-size: 0.8rem;
     padding: 0.5rem;
-  }
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    padding: 0.5rem;
-    gap: 0.3rem;
   }
 `;
 
@@ -74,9 +66,6 @@ export const GoToProfileLink = styled(Link)`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8rem;
-  }
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
     font-size: 0.8rem;
   }
 `;

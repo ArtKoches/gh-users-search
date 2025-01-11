@@ -29,26 +29,19 @@ export const DialogCloseButton = styled.button`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  padding: 0.3rem;
+  padding: 0.5rem;
   font-size: 1rem;
   font-weight: 400;
   color: #fff;
   background-color: transparent;
-  border: 1px solid crimson;
-  border-radius: 0.3rem;
-  transition: background-color 0.3s ease-in-out;
+  border: none;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    background-color: crimson;
+    color: #ff8906;
   }
 
   @media (max-width: 480px) {
-    position: static;
-    display: block;
-    margin: 0 auto;
-    font-size: 0.8rem;
-  }
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
     position: static;
     display: block;
     margin: 0 auto;
