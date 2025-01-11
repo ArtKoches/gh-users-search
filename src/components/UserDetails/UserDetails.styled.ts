@@ -68,11 +68,11 @@ export const DescDetails = styled.dd`
 
 export const GoToProfileLink = styled(Link)`
   font-size: 0.9rem;
-  color: #fff;
+  color: #ff8906;
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #ff8906;
+    color: #fff;
     text-decoration: none;
   }
 

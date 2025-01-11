@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 export const Logo = styled.img`
   width: 100%;
   border-radius: 1rem;
+  box-shadow: 0 0 10px 0 #fff;
 `;
 
 export const Search = styled.div`

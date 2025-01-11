@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { fadeIn } from "../../styles/Common.styled.ts";
 
 export const User = styled.div`
-  padding: 1.5rem;
+  padding: 1.1rem;
   background-color: white;
   border-radius: 1rem;
   animation: ${fadeIn} 1s ease-in-out;
