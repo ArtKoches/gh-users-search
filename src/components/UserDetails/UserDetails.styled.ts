@@ -26,7 +26,7 @@ export const Avatar = styled.img`
     width: 100px;
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    width: 125px;
+    width: 100px;
   }
 `;
 
@@ -47,6 +47,7 @@ export const DescList = styled.dl`
     padding: 0.5rem;
     gap: 0.3rem;
     font-size: 0.8rem;
+    font-style: italic;
   }
 `;
 
@@ -62,10 +63,6 @@ export const DescTitle = styled.dt`
 export const DescDetails = styled.dd`
   grid-column-start: 2;
   word-break: break-word;
-
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    font-size: 0.8rem;
-  }
 `;
 
 export const GoToProfileLink = styled(Link)`
