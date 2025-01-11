@@ -20,7 +20,7 @@ export const DialogWrapper = styled.dialog`
   }
   @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
     width: 80%;
-    max-height: 80%;
+    max-height: 90%;
     overflow-y: auto;
   }
 `;
