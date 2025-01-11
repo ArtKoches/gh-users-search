@@ -11,7 +11,8 @@ export const Wrapper = styled.div`
 
 export const Logo = styled.img`
   width: 100%;
-  border-radius: 1rem;
+  border: 1px solid #fff;
+  border-radius: 0.5rem;
   box-shadow: 0 0 10px 0 #fff;
 `;
 
@@ -37,8 +38,8 @@ export const SearchInput = styled.input`
   width: 100%;
   padding: 0.5rem;
   border: 2px solid transparent;
-  border-radius: 0.5rem;
-  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
   outline: none;
 
   &:focus {
@@ -52,7 +53,7 @@ export const SearchInput = styled.input`
 
 export const Spinner = styled.div`
   position: absolute;
-  top: 18%;
+  top: 15%;
   right: 11%;
   width: 27px;
   height: 27px;
@@ -74,7 +75,7 @@ export const Sort = styled.div`
 
 export const SortTitle = styled.h4`
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: white;
   text-wrap: nowrap;
 
@@ -84,13 +85,12 @@ export const SortTitle = styled.h4`
 `;
 
 export const SortButton = styled.button<{ $isActive?: boolean }>`
-  width: 100%;
-  padding: 0.7rem;
+  padding: 0.5rem;
   color: white;
   background-color: ${(props) => (props.$isActive ? "#ff8906" : "transparent")};
   border: 1px solid #ff8906;
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
   font-weight: 600;
   transition: background-color 0.3s ease-in-out;
 
@@ -99,19 +99,17 @@ export const SortButton = styled.button<{ $isActive?: boolean }>`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8rem;
-    padding: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.4rem;
   }
 `;
 
 export const ResultCounter = styled.p`
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: white;
-  text-wrap: nowrap;
+  font-style: italic;
+  color: #ffd803;
   text-decoration: underline;
 
   @media (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;

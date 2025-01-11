@@ -2,7 +2,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { User } from "../lib/types.ts";
 
 export const useUsers = (sortOrder: string) => {
-  const ITEMS_PER_PAGE = 12; // Max users per page
+  const ITEMS_PER_PAGE = 16; // Max users per page
   const BASE_URL = "https://api.github.com/search/users"; //Base API host
   const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 

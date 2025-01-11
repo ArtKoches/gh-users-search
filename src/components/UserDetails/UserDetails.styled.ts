@@ -64,11 +64,13 @@ export const DescTitle = styled.dt`
 export const DescDetails = styled.dd`
   grid-column-start: 2;
   word-break: break-word;
+  font-weight: 500;
+  font-style: italic;
 `;
 
 export const GoToProfileLink = styled(Link)`
   font-size: 0.9rem;
-  color: #ff8906;
+  color: #ffd803;
   transition: color 0.3s ease-in-out;
 
   &:hover {

@@ -3,8 +3,8 @@ import { fadeIn } from "../../styles/Common.styled.ts";
 
 export const User = styled.div`
   padding: 1.1rem;
-  background-color: white;
-  border-radius: 1rem;
+  background-color: #fffffe;
+  border-radius: 0.5rem;
   animation: ${fadeIn} 1s ease-in-out;
 
   @media (max-width: 768px) {
@@ -35,10 +35,10 @@ export const Wrapper = styled.ul`
 export const List = styled.li`
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.3rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
   border: 1px solid #ff8906;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
@@ -47,9 +47,6 @@ export const List = styled.li`
     background-color: #ff8906;
   }
 
-  @media (max-width: 768px) {
-    padding: 0.2rem;
-  }
   @media (max-width: 480px) {
     border: none;
     border-radius: 0;
@@ -58,15 +55,9 @@ export const List = styled.li`
 `;
 
 export const Avatar = styled.img`
-  width: 70px;
+  width: 50px;
   border-radius: 50%;
-
-  @media (max-width: 768px) {
-    width: 60px;
-  }
-  @media (max-width: 480px) {
-    width: 50px;
-  }
+  border: 1px solid #ccc;
 `;
 
 export const Login = styled.h3`

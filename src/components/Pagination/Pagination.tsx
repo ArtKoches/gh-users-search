@@ -20,7 +20,7 @@ export default function Pagination({
         onClick={() => goToPage(--page)}
         disabled={page === 1}
       >
-        {"<"}
+        Prev
       </S.PrevBtn>
 
       {visiblePages.map((pageNum) => (
@@ -39,7 +39,7 @@ export default function Pagination({
         onClick={() => goToPage(++page)}
         disabled={page === totalPages}
       >
-        {">"}
+        Next
       </S.NextBtn>
     </S.Wrapper>
   );
