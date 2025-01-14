@@ -27,3 +27,9 @@ export const Container = styled.div`
   padding: 1.5rem;
   animation: ${fadeIn} 1s ease-in-out;
 `;
+
+export const ErrorMsg = styled.p`
+  color: red;
+  text-align: center;
+  margin-top: 0.3rem;
+`;

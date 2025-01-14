@@ -2,12 +2,12 @@ import { GlobalStyle } from "../styles/Global.styled.ts";
 import { Container } from "../styles/Common.styled.ts";
 import { useUsers } from "../hooks/useUsers.ts";
 import { usePagination } from "../hooks/usePagination.ts";
+import { useSortOrder } from "../hooks/useSortOrder.ts";
+import { useSelectedUser } from "../hooks/useSelectedUser.ts";
 import SearchBar from "../components/SearchBar/SearchBar.tsx";
 import UserList from "../components/UserList/UserList.tsx";
-import { useSortOrder } from "../hooks/useSortOrder.ts";
 import Dialog from "../components/Dialog/Dialog.tsx";
 import UserDetails from "../components/UserDetails/UserDetails.tsx";
-import { useSelectedUser } from "../hooks/useSelectedUser.ts";
 
 export default function Root() {
   const { sortOrder, handleSort } = useSortOrder("desc");
@@ -22,6 +22,7 @@ export default function Root() {
     goToPage,
     isLoading,
     setIsLoading,
+    error,
   } = useUsers(sortOrder);
 
   const { totalPages, visiblePages } = usePagination(
@@ -36,6 +37,7 @@ export default function Root() {
   return (
     <>
       <GlobalStyle />
+
       <Container>
         <SearchBar
           searchVal={searchVal}
@@ -44,6 +46,7 @@ export default function Root() {
           order={sortOrder}
           onSortOrder={handleSort}
           isLoading={isLoading}
+          error={error}
         />
 
         <UserList

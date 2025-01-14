@@ -11,6 +11,7 @@ export const useUsers = (sortOrder: string) => {
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Handler for search input change
   const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +48,9 @@ export const useUsers = (sortOrder: string) => {
           },
         });
 
+        if (response.status === 401)
+          setError("Unauthorized. Check your api key/token");
+
         const data = await response.json();
         setUsers(data.items ?? []);
         setTotalCount(data.total_count ?? 0);
@@ -75,5 +79,6 @@ export const useUsers = (sortOrder: string) => {
     goToPage,
     isLoading,
     setIsLoading,
+    error,
   };
 };

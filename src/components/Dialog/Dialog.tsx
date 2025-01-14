@@ -1,5 +1,5 @@
-import { ReactNode, useEffect, useRef } from "react";
 import * as S from "./Dialog.styled.ts";
+import { ReactNode, useEffect, useRef } from "react";
 
 type Props = {
   isOpen: boolean;
@@ -17,11 +17,13 @@ export default function Dialog({ isOpen, onClose, children }: Props) {
         isOpen &&
         dialogRef.current &&
         !dialogRef.current.contains(e.target as Node)
-      )
+      ) {
         onClose();
+      }
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
+
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [isOpen, onClose]);
 

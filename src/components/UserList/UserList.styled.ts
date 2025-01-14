@@ -3,8 +3,10 @@ import { fadeIn } from "../../styles/Common.styled.ts";
 
 export const User = styled.div`
   padding: 1.1rem;
-  background-color: #fffffe;
+  background-color: #3f4273;
+  border: 1px solid #7e4bde;
   border-radius: 0.5rem;
+  box-shadow: 0 0 10px 0 #7e4bde;
   animation: ${fadeIn} 1s ease-in-out;
 
   @media (max-width: 768px) {
@@ -19,6 +21,8 @@ export const Wrapper = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ff8906;
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -29,6 +33,8 @@ export const Wrapper = styled.ul`
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
     gap: 0;
+    padding-bottom: 0;
+    border-bottom: none;
   }
 `;
 
@@ -37,20 +43,18 @@ export const List = styled.li`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  border: 1px solid #ff8906;
+  color: #fff;
   border-radius: 0.3rem;
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
     cursor: pointer;
-    color: white;
     background-color: #ff8906;
   }
 
   @media (max-width: 480px) {
-    border: none;
+    border-bottom: 1px solid #ff8906;
     border-radius: 0;
-    border-bottom: 1px solid #282c34;
   }
 `;
 

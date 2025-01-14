@@ -1,6 +1,7 @@
 import * as S from "./SearchBar.styled.ts";
 import { ChangeEvent } from "react";
 import { SortOrder } from "../../lib/types.ts";
+import { ErrorMsg } from "../../styles/Common.styled.ts";
 
 type Props = {
   searchVal: string;
@@ -9,6 +10,7 @@ type Props = {
   order: SortOrder;
   onSortOrder: (order: "asc" | "desc") => void;
   isLoading: boolean;
+  error: string;
 };
 
 export default function SearchBar({
@@ -18,6 +20,7 @@ export default function SearchBar({
   order,
   onSortOrder,
   isLoading,
+  error,
 }: Props) {
   return (
     <S.Wrapper>
@@ -27,11 +30,13 @@ export default function SearchBar({
           <S.SearchInput
             name="search"
             type="search"
-            placeholder="Enter the user's login to start..."
+            placeholder="Github user login"
             value={searchVal}
             onChange={handleSearchChange}
           />
+
           {isLoading && <S.Spinner />}
+          {error && <ErrorMsg>{error}</ErrorMsg>}
         </S.SearchBlock>
 
         <S.Sort hidden={!totalCount}>
@@ -51,7 +56,7 @@ export default function SearchBar({
           </S.SortButton>
         </S.Sort>
 
-        <S.ResultCounter hidden={!searchVal}>
+        <S.ResultCounter hidden={!searchVal || error !== ""}>
           {totalCount} results
         </S.ResultCounter>
       </S.Search>

@@ -37,13 +37,19 @@ export const SearchBlock = styled.div`
 export const SearchInput = styled.input`
   width: 100%;
   padding: 0.5rem;
-  border: 2px solid transparent;
+  color: white;
+  background-color: #3f4273;
+  border: 1px solid transparent;
   border-radius: 0.3rem;
   font-size: 1rem;
   outline: none;
 
   &:focus {
-    border-color: #ff8906;
+    border-color: #7e4bde;
+  }
+  &::placeholder {
+    font-size: 0.9rem;
+    color: darkgray;
   }
 
   @media (max-width: 480px) {
@@ -53,20 +59,25 @@ export const SearchInput = styled.input`
 
 export const Spinner = styled.div`
   position: absolute;
-  top: 15%;
-  right: 11%;
-  width: 27px;
-  height: 27px;
-  border: 4px solid #282c34;
+  top: 17%;
+  right: 6%;
+  padding: 0.5rem;
+  border: 4px solid #000;
   border-top-color: #ff8906;
   border-radius: 50%;
   animation: ${spin} 1s linear infinite;
+
+  @media (max-width: 480px) {
+    right: 8%;
+  }
 `;
 
 export const Sort = styled.div`
   display: ${(props) => (props.hidden ? "none" : "flex")};
   align-items: center;
   gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #7e4bde;
 
   @media (max-width: 480px) {
     gap: 0.5rem;

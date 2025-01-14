@@ -9,8 +9,8 @@ export const Wrapper = styled.div`
 export const Button = styled.button<{ $isActive?: boolean }>`
   padding: 0.5rem;
   margin-right: 0.3rem;
-  color: ${(props) => (props.$isActive ? "#fff" : "#000")};
-  background-color: ${(props) => (props.$isActive ? "#ff8906" : "#fff")};
+  color: #fff;
+  background-color: ${(props) => (props.$isActive ? "#ff8906" : "transparent")};
   border: 1px solid ${(props) => (props.$isActive ? "transparent" : "#ff8906")};
   border-radius: 0.3rem;
   font-size: 0.8rem;

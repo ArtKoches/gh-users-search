@@ -10,6 +10,7 @@ export const useSelectedUser = (setIsLoading: (state: boolean) => void) => {
     null,
   );
 
+  // Fetch users details from API
   const fetchUserDetails = useCallback(
     async (username: string) => {
       setIsLoading(true);
@@ -23,13 +24,14 @@ export const useSelectedUser = (setIsLoading: (state: boolean) => void) => {
         const data = await response.json();
 
         setSelectedUser(data ?? null);
-        setIsOpen(true);
+        setIsOpen(true); // If the request is successful, we open a dialog box by clicking
       } catch (err) {
         console.error(err);
       } finally {
         setIsLoading(false);
       }
     },
+
     [setIsLoading, TOKEN],
   );
 

@@ -27,8 +27,8 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;      
         font-family: "Montserrat", sans-serif;
-        background-color: #111827;                                       
-    }   
+        background-color: #252746;       
+    }     
     
     a,
     input,
