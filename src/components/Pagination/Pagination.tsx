@@ -1,23 +1,19 @@
 import * as S from "./Pagination.styled";
+import { usePagination } from "../../hooks/usePagination.ts";
 
 type Props = {
   page: number;
-  totalPages: number;
-  visiblePages: number[];
-  goToPage: (page: number) => void;
+  setPage: (page: number) => void;
 };
 
-export default function Pagination({
-  page,
-  totalPages,
-  visiblePages,
-  goToPage,
-}: Props) {
+export default function Pagination({ page, setPage }: Props) {
+  const { totalPages, visiblePages } = usePagination();
+
   return (
     <S.Wrapper>
       <S.PrevBtn
-        title={"Previous Page"}
-        onClick={() => goToPage(--page)}
+        title={"Go to previous page"}
+        onClick={() => setPage(--page)}
         disabled={page === 1}
       >
         Prev
@@ -26,8 +22,8 @@ export default function Pagination({
       {visiblePages.map((pageNum) => (
         <S.Button
           key={pageNum}
-          title={`${pageNum}`}
-          onClick={() => goToPage(pageNum)}
+          title={`${pageNum} page`}
+          onClick={() => setPage(pageNum)}
           $isActive={pageNum === page}
         >
           {pageNum}
@@ -35,8 +31,8 @@ export default function Pagination({
       ))}
 
       <S.NextBtn
-        title={"Next Page"}
-        onClick={() => goToPage(++page)}
+        title={"Go to next page"}
+        onClick={() => setPage(++page)}
         disabled={page === totalPages}
       >
         Next

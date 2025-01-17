@@ -1,27 +1,16 @@
 import * as S from "./SearchBar.styled.ts";
 import { ChangeEvent } from "react";
-import { SortOrder } from "../../lib/types.ts";
 import { ErrorMsg } from "../../styles/Common.styled.ts";
+import { useUsersStore } from "../../store/useUsersStore.ts";
 
 type Props = {
-  searchVal: string;
-  handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  totalCount: number;
-  order: SortOrder;
-  onSortOrder: (order: "asc" | "desc") => void;
-  isLoading: boolean;
-  error: string;
+  onSearch: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function SearchBar({
-  searchVal,
-  handleSearchChange,
-  totalCount,
-  order,
-  onSortOrder,
-  isLoading,
-  error,
-}: Props) {
+export default function SearchBar({ onSearch }: Props) {
+  const { query, order, setOrder, totalCount, isLoading, error } =
+    useUsersStore();
+
   return (
     <S.Wrapper>
       <S.Logo src="/git-logo.png" alt="logo" />
@@ -30,33 +19,33 @@ export default function SearchBar({
           <S.SearchInput
             name="search"
             type="search"
-            placeholder="Github user login"
-            value={searchVal}
-            onChange={handleSearchChange}
+            placeholder="Type GitHub username for start..."
+            value={query}
+            onChange={onSearch}
           />
-
           {isLoading && <S.Spinner />}
           {error && <ErrorMsg>{error}</ErrorMsg>}
         </S.SearchBlock>
 
         <S.Sort hidden={!totalCount}>
           <S.SortTitle>Sort by repos:</S.SortTitle>
-
           <S.SortButton
+            title={"Descending sort"}
             $isActive={order === "desc"}
-            onClick={() => onSortOrder("desc")}
+            onClick={() => setOrder("desc")}
           >
             Descending
           </S.SortButton>
           <S.SortButton
+            title={"Ascending sort"}
             $isActive={order === "asc"}
-            onClick={() => onSortOrder("asc")}
+            onClick={() => setOrder("asc")}
           >
             Ascending
           </S.SortButton>
         </S.Sort>
 
-        <S.ResultCounter hidden={!searchVal || error !== ""}>
+        <S.ResultCounter hidden={!query || error !== null}>
           {totalCount} results
         </S.ResultCounter>
       </S.Search>

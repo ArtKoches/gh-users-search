@@ -1,67 +1,29 @@
 import { GlobalStyle } from "../styles/Global.styled.ts";
 import { Container } from "../styles/Common.styled.ts";
+import { useUsersStore } from "../store/useUsersStore.ts";
 import { useUsers } from "../hooks/useUsers.ts";
-import { usePagination } from "../hooks/usePagination.ts";
-import { useSortOrder } from "../hooks/useSortOrder.ts";
 import { useSelectedUser } from "../hooks/useSelectedUser.ts";
 import SearchBar from "../components/SearchBar/SearchBar.tsx";
 import UserList from "../components/UserList/UserList.tsx";
 import Dialog from "../components/Dialog/Dialog.tsx";
 import UserDetails from "../components/UserDetails/UserDetails.tsx";
+import AnchorBtn from "../components/AnchorBtn/AnchorBtn.tsx";
 
 export default function Root() {
-  const { sortOrder, handleSort } = useSortOrder("desc");
-
-  const {
-    searchVal,
-    handleSearchChange,
-    users,
-    totalCount,
-    page,
-    ITEMS_PER_PAGE,
-    goToPage,
-    isLoading,
-    setIsLoading,
-    error,
-  } = useUsers(sortOrder);
-
-  const { totalPages, visiblePages } = usePagination(
-    page,
-    ITEMS_PER_PAGE,
-    totalCount,
-  );
-
-  const { isOpen, setIsOpen, selectedUser, fetchUserDetails } =
-    useSelectedUser(setIsLoading);
+  const { isOpen, setOpen } = useUsersStore();
+  const { users, onQueryChange } = useUsers();
+  const { chosenUser, fetchUserDetails } = useSelectedUser();
 
   return (
     <>
       <GlobalStyle />
-
-      <Container>
-        <SearchBar
-          searchVal={searchVal}
-          handleSearchChange={handleSearchChange}
-          totalCount={totalCount}
-          order={sortOrder}
-          onSortOrder={handleSort}
-          isLoading={isLoading}
-          error={error}
-        />
-
-        <UserList
-          users={users}
-          totalCount={totalCount}
-          page={page}
-          totalPages={totalPages}
-          visiblePages={visiblePages}
-          goToPage={goToPage}
-          onUserClick={fetchUserDetails}
-        />
-
-        <Dialog isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <UserDetails user={selectedUser} />
+      <Container id="target">
+        <SearchBar onSearch={onQueryChange} />
+        <UserList users={users} onUserClick={fetchUserDetails} />
+        <Dialog isOpen={isOpen} onClose={() => setOpen(false)}>
+          {chosenUser && <UserDetails chosenUser={chosenUser} />}
         </Dialog>
+        <AnchorBtn targetId="target" text="Up ⬆" scrollThreshold={200} />
       </Container>
     </>
   );

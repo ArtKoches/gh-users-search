@@ -1,26 +1,34 @@
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { User } from "../lib/types.ts";
+import { useUsersStore } from "../store/useUsersStore.ts";
 
-export const useUsers = (sortOrder: string) => {
-  const ITEMS_PER_PAGE = 16; // Max users per page
+export const useUsers = () => {
+  const {
+    ITEMS_PER_PAGE,
+    query,
+    setQuery,
+    page,
+    setPage,
+    order,
+    setTotalCount,
+    setLoading,
+    setError,
+  } = useUsersStore();
+
   const BASE_URL = "https://api.github.com/search/users"; //Base API host
   const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
-
-  const [searchVal, setSearchVal] = useState("");
   const [users, setUsers] = useState<User[]>([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  // Handler for search input change
-  const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSearchVal(e.target.value);
-    setPage(1); // Reset to first page on search input change
-  }, []);
+  // Handler for search input
+  const onQueryChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setQuery(e.target.value);
+      setPage(1); // Reset to first page on search input change
+      setError(null); // Reset errors message on search value change
+    },
 
-  // Change current page
-  const goToPage = useCallback((page: number) => setPage(page), []);
+    [setQuery, setPage, setError],
+  );
 
   // Fetch users from API
   const fetchUsers = useCallback(
@@ -31,13 +39,13 @@ export const useUsers = (sortOrder: string) => {
         return;
       }
 
-      setIsLoading(true);
+      setLoading(true);
 
       try {
         const params = new URLSearchParams({
           q: `${encodeURIComponent(query)} in:login`,
           sort: "repositories",
-          order: sortOrder.toString(),
+          order: order.toString(),
           page: pageNum.toString(),
           per_page: ITEMS_PER_PAGE.toString(),
         });
@@ -48,37 +56,30 @@ export const useUsers = (sortOrder: string) => {
           },
         });
 
-        if (response.status === 401)
-          setError("Unauthorized. Check your api key/token");
+        if (!response.ok) setError(`Error: ${response.status}`);
 
         const data = await response.json();
         setUsers(data.items ?? []);
         setTotalCount(data.total_count ?? 0);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        if (error instanceof Error) setError(`Error: ${error.message}`);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     },
-    [sortOrder, TOKEN],
+
+    [ITEMS_PER_PAGE, TOKEN, order, setTotalCount, setLoading, setError],
   );
 
-  // Debounced effect to fetch users
+  // Debounce for fetch users
   useEffect(() => {
-    const debounceTimeout = setTimeout(() => fetchUsers(searchVal, page), 300);
+    const debounceTimeout = setTimeout(() => fetchUsers(query, page), 300);
+
     return () => clearTimeout(debounceTimeout);
-  }, [fetchUsers, page, searchVal]);
+  }, [query, fetchUsers, page]);
 
   return {
-    searchVal,
-    handleSearchChange,
+    onQueryChange,
     users,
-    totalCount,
-    ITEMS_PER_PAGE,
-    page,
-    goToPage,
-    isLoading,
-    setIsLoading,
-    error,
   };
 };

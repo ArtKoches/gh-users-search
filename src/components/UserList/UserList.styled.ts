@@ -22,7 +22,7 @@ export const Wrapper = styled.ul`
   grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ff8906;
+  border-bottom: 1px solid #252746;
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -43,7 +43,6 @@ export const List = styled.li`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  color: #fff;
   border-radius: 0.3rem;
   transition: background-color 0.3s ease-in-out;
 
@@ -53,8 +52,8 @@ export const List = styled.li`
   }
 
   @media (max-width: 480px) {
-    border-bottom: 1px solid #ff8906;
     border-radius: 0;
+    border-bottom: 1px solid #252746;
   }
 `;
 
@@ -66,7 +65,9 @@ export const Avatar = styled.img`
 
 export const Login = styled.h3`
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   word-break: break-word;
 
   @media (max-width: 480px) {

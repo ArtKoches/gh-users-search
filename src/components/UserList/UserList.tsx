@@ -1,33 +1,23 @@
 import * as S from "./UserList.styled.ts";
 import { User } from "../../lib/types.ts";
 import Pagination from "../Pagination/Pagination.tsx";
+import { useUsersStore } from "../../store/useUsersStore.ts";
 
 type Props = {
   users: User[];
-  totalCount: number;
-  page: number;
-  totalPages: number;
-  visiblePages: number[];
-  goToPage: (page: number) => void;
   onUserClick: (user: string) => void;
 };
 
-export default function UserList({
-  users,
-  totalCount,
-  page,
-  totalPages,
-  visiblePages,
-  goToPage,
-  onUserClick,
-}: Props) {
+export default function UserList({ users, onUserClick }: Props) {
+  const { page, setPage, totalCount } = useUsersStore();
+
   return (
     <S.User hidden={!totalCount}>
       <S.Wrapper>
         {users.map((user) => (
           <S.List
             key={user.id}
-            title={`${user.login} profile details`}
+            title={`Open ${user.login} profile details`}
             onClick={() => onUserClick(user.login)}
           >
             <S.Avatar src={user.avatar_url} alt="avatar" />
@@ -36,12 +26,7 @@ export default function UserList({
         ))}
       </S.Wrapper>
 
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        visiblePages={visiblePages}
-        goToPage={goToPage}
-      />
+      <Pagination page={page} setPage={setPage} />
     </S.User>
   );
 }

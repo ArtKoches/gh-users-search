@@ -1,10 +1,9 @@
 import { useMemo } from "react";
+import { useUsersStore } from "../store/useUsersStore.ts";
 
-export const usePagination = (
-  page: number,
-  ITEMS_PER_PAGE: number,
-  totalCount: number,
-) => {
+export const usePagination = () => {
+  const { ITEMS_PER_PAGE, page, totalCount } = useUsersStore();
+
   const MAX_VISIBLE_PAGES = 5; // max numbers of pages displayed
 
   // calc the total number of pages

@@ -29,7 +29,10 @@ export const Container = styled.div`
 `;
 
 export const ErrorMsg = styled.p`
-  color: red;
+  color: #f50538;
   text-align: center;
-  margin-top: 0.3rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;

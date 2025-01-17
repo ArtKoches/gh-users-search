@@ -39,7 +39,7 @@ export const SearchInput = styled.input`
   padding: 0.5rem;
   color: white;
   background-color: #3f4273;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0.3rem;
   font-size: 1rem;
   outline: none;
@@ -97,17 +97,14 @@ export const SortTitle = styled.h4`
 
 export const SortButton = styled.button<{ $isActive?: boolean }>`
   padding: 0.5rem;
-  color: white;
-  background-color: ${(props) => (props.$isActive ? "#ff8906" : "transparent")};
-  border: 1px solid #ff8906;
+  color: ${(props) => (props.$isActive ? "#fff" : "#1010104d")};
+  background-color: ${(props) => (props.$isActive ? "#ff8906" : "#efefef4d")};
+  border: 1px solid ${(props) => (props.$isActive ? "#ff8906" : "transparent")};
   border-radius: 0.3rem;
   font-size: 0.8rem;
   font-weight: 600;
+  cursor: ${(props) => props.$isActive && "not-allowed"};
   transition: background-color 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #ff8906;
-  }
 
   @media (max-width: 480px) {
     font-size: 0.7rem;
